@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Request with JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AJAX Request with JavaScript</h1>
+    <label></label>
+    <input type="text" id="inputText" placeholder="javascript">
+    <button type="button" id="commentbutton">Send comment</button>
+
+    <h2>Get comment: <span id="commentOutput"></span></h2>
+    <div id="comments"></div>
+
+    <script>
+        var input = document.getElementById("inputText");
+        var commentOutput = document.getElementById("commentOutput");
+        var commentsDiv = document.getElementById("comments");
+
+        function updateComment() {
+            commentOutput.textContent = input.value;
+        }
+
+        function addComment() {
+            var commentText = input.value;
+            if (commentText) {
+                var newComment = document.createElement("div");
+                newComment.className = "comment";
+                newComment.textContent = commentText;
+                commentsDiv.appendChild(newComment);
+                input.value = "";
+                commentOutput.textContent = "";
+            }
+        }
+
+        input.addEventListener("input", updateComment);
+        document.getElementById("commentbutton").addEventListener("click", addComment);
+    </script>
+</body>
+
+</html>
